@@ -33,7 +33,7 @@ class Firebase:
     def __init__(self, config):
         self.api_key = config["apiKey"]
         self.auth_domain = config["authDomain"]
-        self.database_url = config["databaseURL"]
+        # self.database_url = config["databaseURL"]
         self.storage_bucket = config["storageBucket"]
         self.credentials = None
         self.requests = requests.Session()
@@ -569,3 +569,21 @@ class Stream:
         self.sse.close()
         self.thread.join()
         return self
+
+
+
+
+# def main() -> None:
+#     config = {
+#         "apiKey": "AIzaSyCUr-CfQ9ei5dUfplSAXM5FCgfLiD4YTv8",
+#         "authDomain": "db-qr-calibracao.firebaseapp.com",
+#         "projectId": "db-qr-calibracao",
+#         "storageBucket": "db-qr-calibracao.appspot.com",
+#         # "serviceAccount": "serviceAccountKey.json"
+#     }
+
+#     pyrebase = Firebase(config=config)
+
+
+# if __name__ == "__main__":
+#     main()
