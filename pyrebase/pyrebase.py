@@ -15,7 +15,7 @@ from sseclient import SSEClient
 import threading
 import socket
 # from oauth2client.service_account import ServiceAccountCredentials
-# from google
+from google.oauth2 import service_account
 from gcloud import storage
 from requests.packages.urllib3.contrib.appengine import is_appengine_sandbox
 from requests_toolbelt.adapters import appengine
@@ -46,9 +46,9 @@ class Firebase:
             ]
             service_account_type = type(config["serviceAccount"])
             if service_account_type is str:
-                self.credentials = ServiceAccountCredentials.from_json_keyfile_name(config["serviceAccount"], scopes)
+                self.credentials = service_account.Credentials.from_json_keyfile_name(config["serviceAccount"], scopes)
             if service_account_type is dict:
-                self.credentials = ServiceAccountCredentials.from_json_keyfile_dict(config["serviceAccount"], scopes)
+                self.credentials = service_account.Credentials.from_json_keyfile_dict(config["serviceAccount"], scopes)
         if is_appengine_sandbox():
             # Fix error in standard GAE environment
             # is releated to https://github.com/kennethreitz/requests/issues/3187
